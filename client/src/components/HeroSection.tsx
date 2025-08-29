@@ -19,7 +19,7 @@ export default function HeroSection() {
           <img
             src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhurFZM9n2OgHBrhLGO-IqWzr8AJ2MVQmj1-PBBg-fvJcbmxP_oyB0aQOvoVY4f9D9iLHOTLx3Zn32s0ZEJIKejwHL0hNBAebIv0rNPLXtYl_XU_NSwGPs1su3ZH4ZGnX1GlthqGuEQNA6YTX6jIi5kWjAyQX_MskzifuMnWmoEZJ4BnqwJUc7GT0JhukRX/s16000/1703862582322%20(1).jpg"
             alt="Kishan Maharana Profile"
-            className="w-40 h-40 rounded-full border-4 border-primary mx-auto object-cover hover-glow"
+            className="w-40 h-40 rounded-full mx-auto object-cover shadow-2xl shadow-primary/50 hover:shadow-primary/70 transition-shadow duration-300"
             data-testid="profile-image"
           />
         </div>

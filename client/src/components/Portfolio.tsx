@@ -4,6 +4,7 @@ import AboutSection from "./AboutSection";
 import ExperienceSection from "./ExperienceSection";
 import ProjectsSection from "./ProjectsSection";
 import SkillsSection from "./SkillsSection";
+import BlogSection from "./BlogSection";
 import Footer from "./Footer";
 
 export default function Portfolio() {
@@ -15,6 +16,7 @@ export default function Portfolio() {
       <ExperienceSection />
       <ProjectsSection />
       <SkillsSection />
+      <BlogSection />
       <Footer />
     </div>
   );
