@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, BookOpen } from "lucide-react";
 
 export default function HeroSection() {
   const [isTypingComplete, setIsTypingComplete] = useState(false);
@@ -60,6 +60,16 @@ export default function HeroSection() {
           >
             <Mail size={20} />
             contact --email
+          </a>
+          <a
+            href="https://thedevnerd.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-accent text-accent-foreground px-6 py-3 rounded-lg hover:bg-accent/90 transition-colors terminal-prompt inline-flex items-center justify-center gap-2"
+            data-testid="visit-blog"
+          >
+            <BookOpen size={20} />
+            read --blog
           </a>
           <a
             href="https://linkedin.com/in/kishan-maharana"
