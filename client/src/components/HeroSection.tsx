@@ -52,7 +52,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+        <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
           <a
             href="mailto:kishan@example.com"
             className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors terminal-prompt inline-flex items-center justify-center gap-2"

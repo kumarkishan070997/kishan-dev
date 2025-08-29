@@ -81,26 +81,26 @@ export default function ExperienceCounter() {
         total_experience()
       </h3>
       
-      <div className="grid grid-cols-3 gap-6 text-center">
+      <div className="grid grid-cols-3 gap-4 sm:gap-6 text-center">
         <div className="space-y-2" data-testid="years-counter">
-          <div className="text-3xl font-bold text-primary font-mono">
+          <div className="text-2xl sm:text-3xl font-bold text-primary font-mono">
             {String(experience.years).padStart(2, '0')}
           </div>
-          <div className="text-sm text-muted-foreground font-mono">Years</div>
+          <div className="text-xs sm:text-sm text-muted-foreground font-mono">Years</div>
         </div>
         
         <div className="space-y-2" data-testid="months-counter">
-          <div className="text-3xl font-bold text-primary font-mono">
+          <div className="text-2xl sm:text-3xl font-bold text-primary font-mono">
             {String(experience.months).padStart(2, '0')}
           </div>
-          <div className="text-sm text-muted-foreground font-mono">Months</div>
+          <div className="text-xs sm:text-sm text-muted-foreground font-mono">Months</div>
         </div>
         
         <div className="space-y-2" data-testid="days-counter">
-          <div className="text-3xl font-bold text-primary font-mono">
+          <div className="text-2xl sm:text-3xl font-bold text-primary font-mono">
             {String(experience.days).padStart(2, '0')}
           </div>
-          <div className="text-sm text-muted-foreground font-mono">Days</div>
+          <div className="text-xs sm:text-sm text-muted-foreground font-mono">Days</div>
         </div>
       </div>
       
