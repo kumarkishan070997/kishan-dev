@@ -4,7 +4,6 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
-  base: '/kishan.dev/',
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -17,6 +16,7 @@ export default defineConfig({
         ]
       : []),
   ],
+  base: '/kishan.dev/',
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
