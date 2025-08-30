@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
           <div className="flex justify-center space-x-6 mt-6">
             <a
-              href="mailto:kishan@example.com"
+              href="mailto:kishankumar070997@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors"
               data-testid="footer-email"
             >
@@ -33,7 +33,7 @@ export default function Footer() {
               <BookOpen className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com/in/kishan-maharana"
+              href="https://www.linkedin.com/in/kishanmaharana/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -42,7 +42,7 @@ export default function Footer() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="https://github.com/kishan-maharana"
+              href="https://github.com/kumarkishan070997"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
