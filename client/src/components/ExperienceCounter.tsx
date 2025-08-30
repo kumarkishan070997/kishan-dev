@@ -7,7 +7,7 @@ export default function ExperienceCounter() {
 
   useEffect(() => {
     if (isVisible) {
-      const startDate = new Date('2020-01-01');
+      const startDate = new Date('2020-03-01');
       const currentDate = new Date();
       
       const years = currentDate.getFullYear() - startDate.getFullYear();
@@ -104,11 +104,7 @@ export default function ExperienceCounter() {
         </div>
       </div>
       
-      <div className="mt-6 text-xs text-muted-foreground font-mono text-center">
-        <span className="json-key">"start_date"</span>
-        <span className="json-bracket">:</span>{" "}
-        <span className="json-string">"2020-01-01"</span>
-      </div>
+      
     </div>
   );
 }

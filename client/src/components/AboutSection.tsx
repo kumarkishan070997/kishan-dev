@@ -7,7 +7,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4x2 mx-auto">
           <h2
             ref={ref}
             className={`text-3xl font-bold text-primary mb-8 terminal-prompt section-fade ${
@@ -67,7 +67,11 @@ export default function AboutSection() {
                   <span className="json-bracket">[</span>
                 </div>
                 <div className="ml-8">
-                  <span className="json-string">"Clean Code Architecture"</span>
+                  <span className="json-string">"API Design & Development"</span>
+                  <span className="json-bracket">,</span>
+                </div>
+                <div className="ml-8">
+                  <span className="json-string">"Building Scalable Solutions"</span>
                   <span className="json-bracket">,</span>
                 </div>
                 <div className="ml-8">

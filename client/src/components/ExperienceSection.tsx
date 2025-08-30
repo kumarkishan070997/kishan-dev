@@ -13,6 +13,7 @@ const experiences = [
       "Extended and modified existing Kafka-based services as per evolving business requirements",
       "Backend development using Laravel and PostgreSQL with clean code architecture principles",
       "Contributed to AdTech project with focus on data-driven performance and efficiency",
+      "Collaborated within a cross-functional Agile team to deliver robust and timely solutions.",
     ],
   },
   {
@@ -24,9 +25,12 @@ const experiences = [
     current: false,
     responsibilities: [
       "Developed and integrated both APIs and UI components for seamless user experiences",
+      "Directly collaborated with clients to understand requirements and deliver tailored solutions.",
       "Integrated authentication with Google, Facebook, GitHub, YouTube, and Google Drive",
       "Implemented Stripe payment gateway and worked with AI tools like ChatGPT and Gemini",
       "Optimized database queries and integrated WebSockets for real-time data updates",
+      "Hands-on experience in working with Docker across multiple projects.",
+      "Proficient in troubleshooting and optimizing server-side processes.",
     ],
   },
   {
@@ -41,6 +45,8 @@ const experiences = [
       "Integrated Stripe payment gateway and worked on service-repository patterns",
       "Frontend integration with Vue.js and managed team of junior employees",
       "Amazon AWS S3 integration and query optimization with socket integration",
+      "worked on query optimization and socket integration to show real-time data.",
+      "Managing a team of junior employees.",
     ],
   },
 ];
