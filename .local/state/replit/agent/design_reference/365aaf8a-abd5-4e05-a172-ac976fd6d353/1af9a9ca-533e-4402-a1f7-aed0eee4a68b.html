@@ -1,0 +1,748 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishan Maharana | Software Engineer</title>
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhurFZM9n2OgHBrhLGO-IqWzr8AJ2MVQmj1-PBBg-fvJcbmxP_oyB0aQOvoVY4f9D9iLHOTLx3Zn32s0ZEJIKejwHL0hNBAebIv0rNPLXtYl_XU_NSwGPs1su3ZH4ZGnX1GlthqGuEQNA6YTX6jIi5kWjAyQX_MskzifuMnWmoEZJ4BnqwJUc7GT0JhukRX/s16000/1703862582322%20(1).jpg" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    colors: {
+                        background: "var(--background)",
+                        foreground: "var(--foreground)",
+                        primary: {
+                            DEFAULT: "var(--primary)",
+                            foreground: "var(--primary-foreground)",
+                        },
+                        secondary: {
+                            DEFAULT: "var(--secondary)",
+                            foreground: "var(--secondary-foreground)",
+                        },
+                        muted: {
+                            DEFAULT: "var(--muted)",
+                            foreground: "var(--muted-foreground)",
+                        },
+                        accent: {
+                            DEFAULT: "var(--accent)",
+                            foreground: "var(--accent-foreground)",
+                        },
+                        border: "var(--border)",
+                        ring: "var(--ring)",
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'blink': 'blink 1s infinite',
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' }
+                        },
+                        blink: {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0' }
+                        },
+                        fadeIn: {
+                            'from': { opacity: '0' },
+                            'to': { opacity: '1' }
+                        },
+                        slideUp: {
+                            'from': { 
+                                opacity: '0',
+                                transform: 'translateY(20px)'
+                            },
+                            'to': { 
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            }
+                        },
+                        glow: {
+                            'from': { text-shadow: '0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41' },
+                            'to': { text-shadow: '0 0 20px #00ff41, 0 0 30px #00ff41, 0 0 40px #00ff41' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: hsl(0 0% 4%);
+            --foreground: hsl(210 40% 92%);
+            --primary: hsl(123 89% 49%);
+            --primary-foreground: hsl(0 0% 4%);
+            --secondary: hsl(195 89% 69%);
+            --secondary-foreground: hsl(0 0% 4%);
+            --muted: hsl(218 11% 22%);
+            --muted-foreground: hsl(215 20% 65%);
+            --accent: hsl(43 96% 56%);
+            --accent-foreground: hsl(0 0% 4%);
+            --border: hsl(217 20% 25%);
+            --ring: hsl(123 89% 49%);
+            --radius: 0.375rem;
+        }
+        
+        .terminal-cursor {
+            display: inline-block;
+            background-color: #00ff41;
+            width: 2px;
+            height: 1.2em;
+            animation: blink 1s infinite;
+        }
+        
+        .json-key { color: #61dafb; }
+        .json-string { color: #98c379; }
+        .json-number { color: #d19a66; }
+        .json-bracket { color: #abb2bf; }
+        .terminal-prompt { color: #00ff41; }
+        .terminal-path { color: #61dafb; }
+        .terminal-command { color: #e06c75; }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground font-mono antialiased">
+    <!-- Terminal Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="text-muted-foreground text-sm">
+                        <span class="terminal-prompt">$</span> 
+                        <span class="terminal-path">~/portfolio</span>
+                        <span class="terminal-command"> cat kishan_maharana.json</span>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="text-muted-foreground hover:text-primary transition-colors">.about()</a>
+                    <a href="#experience" class="text-muted-foreground hover:text-primary transition-colors">.experience()</a>
+                    <a href="#projects" class="text-muted-foreground hover:text-primary transition-colors">.projects()</a>
+                    <a href="#skills" class="text-muted-foreground hover:text-primary transition-colors">.skills()</a>
+                    <a href="#contact" class="text-muted-foreground hover:text-primary transition-colors">.contact()</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="mb-8 animate-fade-in">
+                <!-- Professional headshot of a young software engineer -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" 
+                     alt="Kishan Maharana - Software Engineer" 
+                     class="w-32 h-32 rounded-full mx-auto border-4 border-primary/50 shadow-2xl shadow-primary/20 hover:scale-105 transition-transform duration-300" />
+            </div>
+            
+            <div class="space-y-6 animate-slide-up">
+                <div class="terminal-output">
+                    <div class="text-muted-foreground mb-2">
+                        <span class="terminal-prompt">$</span> whoami
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold text-primary animate-glow mb-4">
+                        Kishan Maharana
+                    </h1>
+                </div>
+                
+                <div class="terminal-output">
+                    <div class="text-muted-foreground mb-2">
+                        <span class="terminal-prompt">$</span> echo $ROLE
+                    </div>
+                    <h2 class="text-xl md:text-3xl text-secondary font-semibold">
+                        { Software Engineer }
+                    </h2>
+                </div>
+                
+                <div class="terminal-output">
+                    <div class="text-muted-foreground mb-2">
+                        <span class="terminal-prompt">$</span> cat skills.txt
+                    </div>
+                    <p class="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                        Laravel | PHP | Kafka | REST APIs | WebSocket | MySQL | PostgreSQL
+                    </p>
+                </div>
+                
+                <div class="flex justify-center space-x-4 mt-8">
+                    <button onclick="scrollToSection('about')" class="px-6 py-3 bg-primary/20 border border-primary rounded-md hover:bg-primary/30 transition-all duration-300 text-primary">
+                        <i class="fas fa-terminal mr-2"></i>./explore
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="px-6 py-3 bg-secondary/20 border border-secondary rounded-md hover:bg-secondary/30 transition-all duration-300 text-secondary">
+                        <i class="fas fa-envelope mr-2"></i>./contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-16 space-y-24">
+        
+        <!-- About Section -->
+        <section id="about" class="animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-primary mb-2">
+                    <span class="terminal-prompt">$</span> cat about.json
+                </h2>
+                <div class="w-16 h-1 bg-primary rounded"></div>
+            </div>
+            
+            <div class="bg-muted/20 rounded-lg border border-border p-6 font-mono">
+                <div class="text-secondary mb-4">
+                    <span class="json-bracket">{</span>
+                </div>
+                <div class="pl-4 space-y-2">
+                    <div>
+                        <span class="json-key">"name"</span>: <span class="json-string">"Kishan Maharana"</span>,
+                    </div>
+                    <div>
+                        <span class="json-key">"role"</span>: <span class="json-string">"Software Engineer"</span>,
+                    </div>
+                    <div>
+                        <span class="json-key">"experience"</span>: <span class="json-string">"5+ years"</span>,
+                    </div>
+                    <div>
+                        <span class="json-key">"description"</span>: <span class="json-string">"Experienced Laravel Developer with 5+ years of expertise in web-based MVC pattern applications, RESTful API development, and Kafka-based services. Strong knowledge of optimized API design, versioning, and modularized Laravel structures. Proficient in HTML, CSS, JS, Bootstrap, and AJAX. Skilled in backend development, database optimization, and real-time data updates using WebSockets."</span>,
+                    </div>
+                    <div>
+                        <span class="json-key">"specializations"</span>: <span class="json-bracket">[</span>
+                        <div class="pl-4 text-json-string">
+                            "API Development",<br>
+                            "Laravel Framework",<br>
+                            "Database Optimization",<br>
+                            "Real-time Applications",<br>
+                            "Kafka Integration"
+                        </div>
+                        <span class="json-bracket">]</span>
+                    </div>
+                </div>
+                <div class="text-secondary">
+                    <span class="json-bracket">}</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-primary mb-2">
+                    <span class="terminal-prompt">$</span> ls -la skills/
+                </h2>
+                <div class="w-16 h-1 bg-primary rounded"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Backend Skills -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6">
+                    <h3 class="text-secondary font-bold mb-4 flex items-center">
+                        <i class="fas fa-server mr-2"></i>
+                        Backend
+                    </h3>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div class="flex justify-between items-center">
+                            <span>Laravel</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-20"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>PHP</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-20"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Kafka</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-16"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>REST APIs</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-20"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database Skills -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6">
+                    <h3 class="text-secondary font-bold mb-4 flex items-center">
+                        <i class="fas fa-database mr-2"></i>
+                        Database
+                    </h3>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div class="flex justify-between items-center">
+                            <span>MySQL</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-20"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>PostgreSQL</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-18"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Redis</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-16"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6">
+                    <h3 class="text-secondary font-bold mb-4 flex items-center">
+                        <i class="fas fa-tools mr-2"></i>
+                        Tools
+                    </h3>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div class="flex justify-between items-center">
+                            <span>Docker</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-16"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>AWS S3</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-18"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>WebSocket</span>
+                            <div class="w-24 bg-border rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-16"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-primary mb-2">
+                    <span class="terminal-prompt">$</span> cat experience.json
+                </h2>
+                <div class="w-16 h-1 bg-primary rounded"></div>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Current Role -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6 hover:border-primary/50 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-secondary">Software Engineer</h3>
+                            <p class="text-accent font-semibold">Rishabh Software</p>
+                            <p class="text-muted-foreground text-sm">Vadodara, Gujarat, India</p>
+                        </div>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-mono">
+                            Apr 2025 - Present
+                        </span>
+                    </div>
+                    
+                    <div class="font-mono text-sm">
+                        <div class="text-secondary mb-2">
+                            <span class="json-key">"responsibilities"</span>: <span class="json-bracket">[</span>
+                        </div>
+                        <ul class="pl-4 space-y-2 text-muted-foreground">
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Developed and enhanced RESTful APIs; resolved critical server-side issues and performance bottlenecks</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Extended and modified existing Kafka-based services as per evolving business requirements</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Backend development using Laravel and PostgreSQL with clean architecture principles</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Contributed to AdTech project with focus on data-driven performance and efficiency</span>
+                            </li>
+                        </ul>
+                        <div class="text-secondary mt-2">
+                            <span class="json-bracket">]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Previous Role -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6 hover:border-primary/50 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-secondary">Software Developer</h3>
+                            <p class="text-accent font-semibold">Codebuddy Pvt. Ltd.</p>
+                            <p class="text-muted-foreground text-sm">Kolkata, West Bengal, India</p>
+                        </div>
+                        <span class="bg-secondary/20 text-secondary px-3 py-1 rounded-full text-xs font-mono">
+                            Oct 2023 - Apr 2025
+                        </span>
+                    </div>
+                    
+                    <div class="font-mono text-sm">
+                        <div class="text-secondary mb-2">
+                            <span class="json-key">"key_achievements"</span>: <span class="json-bracket">[</span>
+                        </div>
+                        <ul class="pl-4 space-y-2 text-muted-foreground">
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Integrated authentication with Google, Facebook, GitHub, YouTube platforms</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Implemented Stripe payment gateway for secure transactions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Optimized database queries and integrated WebSockets for real-time updates</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Docker implementation across multiple projects</span>
+                            </li>
+                        </ul>
+                        <div class="text-secondary mt-2">
+                            <span class="json-bracket">]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Early Career -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6 hover:border-primary/50 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-secondary">Software Developer</h3>
+                            <p class="text-accent font-semibold">ValueCoders</p>
+                            <p class="text-muted-foreground text-sm">Gurugram, Haryana, India</p>
+                        </div>
+                        <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-mono">
+                            Mar 2020 - Oct 2023
+                        </span>
+                    </div>
+                    
+                    <div class="font-mono text-sm">
+                        <div class="text-secondary mb-2">
+                            <span class="json-key">"foundation_skills"</span>: <span class="json-bracket">[</span>
+                        </div>
+                        <ul class="pl-4 space-y-2 text-muted-foreground">
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">API development, versioning, error handling, and server-level debugging</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Service-repository patterns for business logic implementation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Team management and mentoring junior developers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span class="json-string">Amazon AWS S3 integration and query optimization</span>
+                            </li>
+                        </ul>
+                        <div class="text-secondary mt-2">
+                            <span class="json-bracket">]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-primary mb-2">
+                    <span class="terminal-prompt">$</span> ls projects/
+                </h2>
+                <div class="w-16 h-1 bg-primary rounded"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Workstatus Project -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-secondary">Workstatus</h3>
+                        <i class="fas fa-users text-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-accent text-sm mb-4">Workforce Management Platform</p>
+                    <div class="font-mono text-xs space-y-2">
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Real-time analytics APIs
+                        </div>
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Automated reporting system
+                        </div>
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Performance optimization
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-primary/20 text-primary px-2 py-1 rounded text-xs">Laravel</span>
+                        <span class="bg-secondary/20 text-secondary px-2 py-1 rounded text-xs">MySQL</span>
+                        <span class="bg-accent/20 text-accent px-2 py-1 rounded text-xs">APIs</span>
+                    </div>
+                </div>
+
+                <!-- Membership.io Project -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-secondary">Membership.io</h3>
+                        <i class="fas fa-cog text-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-accent text-sm mb-4">Content Management Platform</p>
+                    <div class="font-mono text-xs space-y-2">
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Backend API optimization
+                        </div>
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Third-party integrations
+                        </div>
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Scalable features
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-primary/20 text-primary px-2 py-1 rounded text-xs">Laravel</span>
+                        <span class="bg-secondary/20 text-secondary px-2 py-1 rounded text-xs">PostgreSQL</span>
+                        <span class="bg-accent/20 text-accent px-2 py-1 rounded text-xs">CMS</span>
+                    </div>
+                </div>
+
+                <!-- HiringDay Project -->
+                <div class="bg-muted/20 rounded-lg border border-border p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-secondary">HiringDay</h3>
+                        <i class="fas fa-file-alt text-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-accent text-sm mb-4">Resume Builder Platform</p>
+                    <div class="font-mono text-xs space-y-2">
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Full-stack Laravel solution
+                        </div>
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Resume generation system
+                        </div>
+                        <div class="text-muted-foreground">
+                            <span class="text-primary">•</span> Document processing
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-primary/20 text-primary px-2 py-1 rounded text-xs">Laravel</span>
+                        <span class="bg-secondary/20 text-secondary px-2 py-1 rounded text-xs">Vue.js</span>
+                        <span class="bg-accent/20 text-accent px-2 py-1 rounded text-xs">PDF</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-primary mb-2">
+                    <span class="terminal-prompt">$</span> ./contact.sh
+                </h2>
+                <div class="w-16 h-1 bg-primary rounded"></div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-muted/20 rounded-lg border border-border p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Let's Connect</h3>
+                        <p class="text-muted-foreground">Ready to collaborate on your next project</p>
+                    </div>
+                    
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-muted-foreground mb-2">
+                                    <span class="terminal-prompt">$</span> echo $NAME
+                                </label>
+                                <input type="text" class="w-full bg-background border border-border rounded-md px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-muted-foreground mb-2">
+                                    <span class="terminal-prompt">$</span> echo $EMAIL
+                                </label>
+                                <input type="email" class="w-full bg-background border border-border rounded-md px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-muted-foreground mb-2">
+                                <span class="terminal-prompt">$</span> cat message.txt
+                            </label>
+                            <textarea rows="4" class="w-full bg-background border border-border rounded-md px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary/20 border border-primary text-primary py-3 rounded-md hover:bg-primary/30 transition-all duration-300 font-mono">
+                            <i class="fas fa-paper-plane mr-2"></i>./send_message
+                        </button>
+                    </form>
+                    
+                    <div class="mt-8 pt-8 border-t border-border">
+                        <div class="flex justify-center space-x-6">
+                            <a href="mailto:kishan@example.com" class="text-muted-foreground hover:text-primary transition-colors">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/kishan-maharana" class="text-muted-foreground hover:text-secondary transition-colors">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="https://github.com/kishan-maharana" class="text-muted-foreground hover:text-accent transition-colors">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="font-mono text-sm text-muted-foreground">
+                <span class="terminal-prompt">$</span> echo "© 2024 Kishan Maharana. All rights reserved."
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Button (Hidden for simplicity) -->
+    <div class="fixed bottom-6 right-6 md:hidden">
+        <button onclick="toggleMobileMenu()" class="w-12 h-12 bg-primary/20 border border-primary rounded-full flex items-center justify-center text-primary hover:bg-primary/30 transition-all duration-300">
+            <i class="fas fa-terminal"></i>
+        </button>
+    </div>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add scroll effect to navigation
+        (() => {
+            const header = document.querySelector('header');
+            let lastScrollY = window.scrollY;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                lastScrollY = window.scrollY;
+            });
+        })();
+
+        // Intersection Observer for animations
+        (() => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-slide-up');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        })();
+
+        // Terminal typing effect
+        (() => {
+            const commands = [
+                'whoami',
+                'cat skills.txt',
+                'ls projects/',
+                'git commit -m "Building the future"',
+                'npm run success'
+            ];
+            
+            let currentCommand = 0;
+            const commandElement = document.querySelector('.terminal-command');
+            
+            function typeCommand() {
+                if (commandElement) {
+                    commandElement.textContent = ` ${commands[currentCommand]}`;
+                    currentCommand = (currentCommand + 1) % commands.length;
+                }
+            }
+            
+            // Change command every 3 seconds
+            setInterval(typeCommand, 3000);
+        })();
+
+        // TODO: Implement form submission logic
+        // TODO: Add API endpoints for contact form
+        // TODO: Implement mobile menu functionality
+        // TODO: Add dark/light theme toggle
+        
+        function toggleMobileMenu() {
+            // TODO: Implement mobile menu toggle
+            console.log('Mobile menu toggle - to be implemented');
+        }
+        
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // TODO: Implement actual form submission
+            alert('Thank you for your message! This is a demo - form submission needs to be implemented.');
+        });
+    </script>
+</body>
+</html>

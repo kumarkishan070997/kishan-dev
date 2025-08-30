@@ -1,0 +1,762 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishan Maharana | Software Engineer</title>
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhurFZM9n2OgHBrhLGO-IqWzr8AJ2MVQmj1-PBBg-fvJcbmxP_oyB0aQOvoVY4f9D9iLHOTLx3Zn32s0ZEJIKejwHL0hNBAebIv0rNPLXtYl_XU_NSwGPs1su3ZH4ZGnX1GlthqGuEQNA6YTX6jIi5kWjAyQX_MskzifuMnWmoEZJ4BnqwJUc7GT0JhukRX/s16000/1703862582322%20(1).jpg" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                    chart: {
+                        "1": "var(--chart-1)",
+                        "2": "var(--chart-2)",
+                        "3": "var(--chart-3)",
+                        "4": "var(--chart-4)",
+                        "5": "var(--chart-5)",
+                    }
+                },
+                fontFamily: {
+                    sans: ["var(--font-sans)"],
+                    serif: ["var(--font-serif)"],
+                    mono: ["var(--font-mono)"],
+                }
+            },
+        }
+    };
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    
+    <style>
+        :root {
+            --background: hsl(220 13% 9%);
+            --foreground: hsl(220 9% 85%);
+            --card: hsl(220 13% 11%);
+            --card-foreground: hsl(220 9% 85%);
+            --popover: hsl(220 13% 11%);
+            --popover-foreground: hsl(220 9% 85%);
+            --primary: hsl(120 100% 55%);
+            --primary-foreground: hsl(220 13% 9%);
+            --secondary: hsl(210 60% 65%);
+            --secondary-foreground: hsl(220 13% 9%);
+            --muted: hsl(220 13% 14%);
+            --muted-foreground: hsl(220 9% 55%);
+            --accent: hsl(30 100% 55%);
+            --accent-foreground: hsl(220 13% 9%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(220 9% 85%);
+            --border: hsl(220 13% 18%);
+            --input: hsl(220 13% 18%);
+            --ring: hsl(120 100% 55%);
+            --radius: 0.5rem;
+            --font-sans: "Inter", system-ui, sans-serif;
+            --font-mono: "JetBrains Mono", "Consolas", monospace;
+        }
+        
+        * {
+            border-color: var(--border);
+        }
+        
+        body {
+            font-family: var(--font-mono);
+            scroll-behavior: smooth;
+        }
+        
+        .terminal-cursor::after {
+            content: "_";
+            animation: blink 1s infinite;
+            color: var(--primary);
+        }
+        
+        .json-key {
+            color: var(--secondary);
+        }
+        
+        .json-string {
+            color: var(--accent);
+        }
+        
+        .json-value {
+            color: var(--primary);
+        }
+        
+        .json-bracket {
+            color: var(--foreground);
+            font-weight: 600;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            height: 4px;
+            border-radius: 2px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .terminal-prompt::before {
+            content: "$ ";
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-sm border-b border-border">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-primary font-semibold">
+                    <span class="terminal-prompt">kishan.dev</span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-mono text-sm">
+                    <a href="#about" class="text-muted-foreground hover:text-primary transition-colors terminal-prompt">about</a>
+                    <a href="#experience" class="text-muted-foreground hover:text-primary transition-colors terminal-prompt">experience</a>
+                    <a href="#projects" class="text-muted-foreground hover:text-primary transition-colors terminal-prompt">projects</a>
+                    <a href="#skills" class="text-muted-foreground hover:text-primary transition-colors terminal-prompt">skills</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-primary">
+                        <i class="fas fa-terminal"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: Hero Section -->
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <!-- A professional headshot of a software engineer in business attire -->
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhurFZM9n2OgHBrhLGO-IqWzr8AJ2MVQmj1-PBBg-fvJcbmxP_oyB0aQOvoVY4f9D9iLHOTLx3Zn32s0ZEJIKejwHL0hNBAebIv0rNPLXtYl_XU_NSwGPs1su3ZH4ZGnX1GlthqGuEQNA6YTX6jIi5kWjAyQX_MskzifuMnWmoEZJ4BnqwJUc7GT0JhukRX/s16000/1703862582322%20(1).jpg" 
+                     alt="Kishan Maharana Profile" 
+                     class="w-40 h-40 rounded-full border-4 border-primary mx-auto object-cover hover-glow" />
+            </div>
+            
+            <div class="font-mono space-y-4">
+                <div class="text-muted-foreground text-lg">
+                    <span class="terminal-prompt">whoami</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-primary typing-animation">
+                    Kishan Maharana
+                </h1>
+                <div class="text-xl md:text-2xl text-secondary font-semibold">
+                    <span class="json-bracket">{</span> <span class="json-string">"role"</span><span class="json-bracket">:</span> <span class="json-value">"Software Engineer"</span> <span class="json-bracket">}</span>
+                </div>
+                <div class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    <span class="json-key">"specialization"</span><span class="json-bracket">:</span> <span class="json-string">"Laravel | PHP | Kafka | REST APIs | WebSocket | MySQL | PostgreSQL"</span>
+                </div>
+            </div>
+            
+            <div class="mt-12 flex justify-center space-x-6">
+                <a href="mailto:your.email@example.com" class="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors terminal-prompt">
+                    contact --email
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors terminal-prompt">
+                    connect --linkedin
+                </a>
+                <a href="https://github.com/yourprofile" class="border border-secondary text-secondary px-6 py-3 rounded-lg hover:bg-secondary hover:text-secondary-foreground transition-colors terminal-prompt">
+                    view --github
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: About Section -->
+    <section id="about" class="py-20 bg-muted/30">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-primary mb-8 terminal-prompt section-fade">
+                    cat about.json
+                </h2>
+                
+                <div class="bg-card border border-border rounded-lg p-8 font-mono text-sm hover-glow section-fade">
+                    <div class="space-y-2">
+                        <div><span class="json-bracket">{</span></div>
+                        <div class="ml-4">
+                            <span class="json-key">"name"</span><span class="json-bracket">:</span> <span class="json-string">"Kishan Maharana"</span><span class="json-bracket">,</span>
+                        </div>
+                        <div class="ml-4">
+                            <span class="json-key">"title"</span><span class="json-bracket">:</span> <span class="json-string">"Software Engineer"</span><span class="json-bracket">,</span>
+                        </div>
+                        <div class="ml-4">
+                            <span class="json-key">"experience"</span><span class="json-bracket">:</span> <span class="json-value">"5+ years"</span><span class="json-bracket">,</span>
+                        </div>
+                        <div class="ml-4">
+                            <span class="json-key">"description"</span><span class="json-bracket">:</span> <span class="json-string">"Experienced Laravel Developer with 5+ years of expertise in web-based MVC pattern applications, RESTful API development, and Kafka-based services. Strong knowledge of optimized API design, versioning, and modularized Laravel structures. Proficient in HTML, CSS, JS, Bootstrap, and AJAX. Skilled in backend development, database optimization, and real-time data updates using WebSockets."</span><span class="json-bracket">,</span>
+                        </div>
+                        <div class="ml-4">
+                            <span class="json-key">"strengths"</span><span class="json-bracket">:</span> <span class="json-bracket">[</span>
+                        </div>
+                        <div class="ml-8">
+                            <span class="json-string">"Clean Code Architecture"</span><span class="json-bracket">,</span>
+                        </div>
+                        <div class="ml-8">
+                            <span class="json-string">"Performance Optimization"</span><span class="json-bracket">,</span>
+                        </div>
+                        <div class="ml-8">
+                            <span class="json-string">"Team Leadership"</span><span class="json-bracket">,</span>
+                        </div>
+                        <div class="ml-8">
+                            <span class="json-string">"Client Collaboration"</span>
+                        </div>
+                        <div class="ml-4"><span class="json-bracket">]</span></div>
+                        <div><span class="json-bracket">}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About Section -->
+
+    <!-- @COMPONENT: Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-primary mb-12 terminal-prompt section-fade">
+                    grep -r "experience" career.json
+                </h2>
+                
+                <div class="space-y-8">
+                    <!-- Current Position -->
+                    <div class="bg-card border border-border rounded-lg p-8 font-mono text-sm hover-glow section-fade">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-secondary">Software Engineer</h3>
+                                <p class="text-accent">Rishabh Software</p>
+                                <p class="text-muted-foreground">Vadodara, Gujarat, India</p>
+                            </div>
+                            <span class="bg-primary text-primary-foreground px-3 py-1 rounded text-xs">Apr 2025 - Present</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div><span class="json-key">"responsibilities"</span><span class="json-bracket">:</span> <span class="json-bracket">[</span></div>
+                            <div class="ml-4">
+                                <span class="json-string">"Developed and enhanced RESTful APIs; resolved critical server-side issues and performance bottlenecks"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Extended and modified existing Kafka-based services as per evolving business requirements"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Backend development using Laravel and PostgreSQL with clean code architecture principles"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Contributed to AdTech project with focus on data-driven performance and efficiency"</span>
+                            </div>
+                            <div><span class="json-bracket">]</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Previous Position 1 -->
+                    <div class="bg-card border border-border rounded-lg p-8 font-mono text-sm hover-glow section-fade">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-secondary">Software Developer</h3>
+                                <p class="text-accent">Codebuddy Pvt. Ltd.</p>
+                                <p class="text-muted-foreground">Kolkata, West Bengal, India</p>
+                            </div>
+                            <span class="bg-muted text-muted-foreground px-3 py-1 rounded text-xs">Oct 2023 - Apr 2025</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div><span class="json-key">"responsibilities"</span><span class="json-bracket">:</span> <span class="json-bracket">[</span></div>
+                            <div class="ml-4">
+                                <span class="json-string">"Developed and integrated both APIs and UI components for seamless user experiences"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Integrated authentication with Google, Facebook, GitHub, YouTube, and Google Drive"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Implemented Stripe payment gateway and worked with AI tools like ChatGPT and Gemini"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Optimized database queries and integrated WebSockets for real-time data updates"</span>
+                            </div>
+                            <div><span class="json-bracket">]</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Previous Position 2 -->
+                    <div class="bg-card border border-border rounded-lg p-8 font-mono text-sm hover-glow section-fade">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-secondary">Software Developer</h3>
+                                <p class="text-accent">ValueCoders</p>
+                                <p class="text-muted-foreground">Gurugram, Haryana, India</p>
+                            </div>
+                            <span class="bg-muted text-muted-foreground px-3 py-1 rounded text-xs">Mar 2020 - Oct 2023</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div><span class="json-key">"responsibilities"</span><span class="json-bracket">:</span> <span class="json-bracket">[</span></div>
+                            <div class="ml-4">
+                                <span class="json-string">"API development, versioning, error handling, and server level debugging"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Integrated Stripe payment gateway and worked on service-repository patterns"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Frontend integration with Vue.js and managed team of junior employees"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Amazon AWS S3 integration and query optimization with socket integration"</span>
+                            </div>
+                            <div><span class="json-bracket">]</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Experience Section -->
+
+    <!-- @COMPONENT: Projects Section -->
+    <section id="projects" class="py-20 bg-muted/30">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-primary mb-12 terminal-prompt section-fade">
+                    ls -la projects/
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-card border border-border rounded-lg p-6 font-mono text-sm hover-glow section-fade">
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold text-secondary mb-2">Workstatus</h3>
+                            <span class="bg-accent text-accent-foreground px-2 py-1 rounded text-xs">Workforce Management</span>
+                        </div>
+                        
+                        <div class="space-y-2 text-xs">
+                            <div><span class="json-key">"features"</span><span class="json-bracket">:</span> <span class="json-bracket">[</span></div>
+                            <div class="ml-4">
+                                <span class="json-string">"Real-time analytics"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Automated reporting"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Performance optimization"</span>
+                            </div>
+                            <div><span class="json-bracket">]</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="bg-card border border-border rounded-lg p-6 font-mono text-sm hover-glow section-fade">
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold text-secondary mb-2">Membership.io</h3>
+                            <span class="bg-accent text-accent-foreground px-2 py-1 rounded text-xs">Content Management</span>
+                        </div>
+                        
+                        <div class="space-y-2 text-xs">
+                            <div><span class="json-key">"features"</span><span class="json-bracket">:</span> <span class="json-bracket">[</span></div>
+                            <div class="ml-4">
+                                <span class="json-string">"Backend API optimization"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Third-party integrations"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Scalable architecture"</span>
+                            </div>
+                            <div><span class="json-bracket">]</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="bg-card border border-border rounded-lg p-6 font-mono text-sm hover-glow section-fade">
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold text-secondary mb-2">HiringDay</h3>
+                            <span class="bg-accent text-accent-foreground px-2 py-1 rounded text-xs">Resume Platform</span>
+                        </div>
+                        
+                        <div class="space-y-2 text-xs">
+                            <div><span class="json-key">"features"</span><span class="json-bracket">:</span> <span class="json-bracket">[</span></div>
+                            <div class="ml-4">
+                                <span class="json-string">"Full-stack Laravel solution"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Resume generation"</span><span class="json-bracket">,</span>
+                            </div>
+                            <div class="ml-4">
+                                <span class="json-string">"Expert-crafted templates"</span>
+                            </div>
+                            <div><span class="json-bracket">]</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Projects Section -->
+
+    <!-- @COMPONENT: Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-primary mb-12 terminal-prompt section-fade">
+                    cat skills.json | jq '.'
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Backend Skills -->
+                    <div class="bg-card border border-border rounded-lg p-8 hover-glow section-fade">
+                        <h3 class="text-xl font-semibold text-secondary mb-6 font-mono">Backend Development</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Laravel/PHP</span>
+                                    <span class="json-value font-mono text-sm">95%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">REST APIs</span>
+                                    <span class="json-value font-mono text-sm">90%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Kafka</span>
+                                    <span class="json-value font-mono text-sm">85%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">WebSocket</span>
+                                    <span class="json-value font-mono text-sm">80%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Database & Tools -->
+                    <div class="bg-card border border-border rounded-lg p-8 hover-glow section-fade">
+                        <h3 class="text-xl font-semibold text-secondary mb-6 font-mono">Database & Tools</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">MySQL</span>
+                                    <span class="json-value font-mono text-sm">90%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">PostgreSQL</span>
+                                    <span class="json-value font-mono text-sm">85%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Docker</span>
+                                    <span class="json-value font-mono text-sm">75%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">AWS S3</span>
+                                    <span class="json-value font-mono text-sm">70%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Frontend Skills -->
+                    <div class="bg-card border border-border rounded-lg p-8 hover-glow section-fade">
+                        <h3 class="text-xl font-semibold text-secondary mb-6 font-mono">Frontend Development</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Vue.js</span>
+                                    <span class="json-value font-mono text-sm">75%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">JavaScript</span>
+                                    <span class="json-value font-mono text-sm">85%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Bootstrap</span>
+                                    <span class="json-value font-mono text-sm">90%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">AJAX</span>
+                                    <span class="json-value font-mono text-sm">85%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Skills -->
+                    <div class="bg-card border border-border rounded-lg p-8 hover-glow section-fade">
+                        <h3 class="text-xl font-semibold text-secondary mb-6 font-mono">Other Skills</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Team Leadership</span>
+                                    <span class="json-value font-mono text-sm">85%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Client Communication</span>
+                                    <span class="json-value font-mono text-sm">90%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Agile Development</span>
+                                    <span class="json-value font-mono text-sm">80%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="json-key font-mono text-sm">Problem Solving</span>
+                                    <span class="json-value font-mono text-sm">95%</span>
+                                </div>
+                                <div class="bg-muted rounded-full h-2">
+                                    <div class="skill-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Skills Section -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="py-12 bg-card border-t border-border">
+        <div class="container mx-auto px-6 text-center">
+            <div class="font-mono space-y-4">
+                <div class="text-muted-foreground">
+                    <span class="terminal-prompt">exit 0</span>
+                </div>
+                <div class="text-sm text-muted-foreground">
+                    <span class="json-bracket">{</span> <span class="json-string">"status"</span><span class="json-bracket">:</span> <span class="json-value">"Thanks for visiting!"</span> <span class="json-bracket">}</span>
+                </div>
+                <div class="flex justify-center space-x-6 mt-6">
+                    <a href="mailto:your.email@example.com" class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/yourprofile" class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement smooth scrolling and section visibility animations
+        (function() {
+            // Intersection Observer for section animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections with fade animation
+            document.querySelectorAll('.section-fade').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animate skill bars when they come into view
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll('.skill-bar');
+                        skillBars.forEach((bar, index) => {
+                            setTimeout(() => {
+                                bar.style.width = bar.style.width;
+                            }, index * 200);
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('#skills .section-fade').forEach(section => {
+                skillObserver.observe(section);
+            });
+
+            // Terminal cursor animation for typing effect
+            const titleElement = document.querySelector('.typing-animation');
+            if (titleElement) {
+                setTimeout(() => {
+                    titleElement.classList.add('terminal-cursor');
+                }, 3000);
+            }
+        })();
+    </script>
+</body>
+</html>
