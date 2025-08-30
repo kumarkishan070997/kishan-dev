@@ -16,7 +16,6 @@ export default defineConfig({
         ]
       : []),
   ],
-  base: '/kishan.dev/', 
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
