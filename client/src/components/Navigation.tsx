@@ -32,7 +32,7 @@ export default function Navigation() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-primary font-semibold">
-            <span className="terminal-prompt font-mono">kishan.dev</span>
+            <span className="terminal-prompt font-mono">kishan-dev</span>
           </div>
 
           {/* Desktop Navigation */}
